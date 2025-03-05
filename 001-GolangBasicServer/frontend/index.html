@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Go REST API連携テスト</title>
+</head>
+<body>
+  <h1>Go APIからのレスポンス</h1>
+  <button id="callApi">APIを呼び出す</button>
+  <p id="result"></p>
+
+  <script>
+    document.getElementById('callApi').addEventListener('click', () => {
+      fetch('http://localhost:8080/api/hello')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('result').textContent = data.message;
+        })
+        .catch(error => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>
